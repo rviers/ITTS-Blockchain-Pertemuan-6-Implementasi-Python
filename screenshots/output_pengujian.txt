@@ -1,0 +1,70 @@
+======================================================================
+PENGUJIAN IMPLEMENTASI BLOCKCHAIN SEDERHANA PYTHON - TUGAS 4 ITTS
+======================================================================
+
+[SKENARIO 1] Inisialisasi Chain & Genesis Block
+Jumlah blok saat ini : 1
+Genesis Block Index  : 0
+Genesis Prev Hash    : 0000000000000000000000000000000000000000000000000000000000000000
+Genesis Block Hash   : 51cb839693409fafe1a324d148c5ec3ea59714ceb8a8ae3f4241503d20b04406
+Status Validasi Chain: VALID (True)
+
+[SKENARIO 2] Menambahkan 3 Blok Transaksi Berbeda
+Blok 1 ditambahkan: Data={'pengirim': 'Alice', 'penerima': 'Bob', 'nominal': 50, 'token': 'IDR'}, Hash=3d6b2a27c4fe4131c3e7...
+Blok 2 ditambahkan: Data={'pengirim': 'Bob', 'penerima': 'Charlie', 'nominal': 20, 'token': 'IDR'}, Hash=4bfe0cf63e24150a701e...
+Blok 3 ditambahkan: Data={'pengirim': 'Charlie', 'penerima': 'Dave', 'nominal': 15, 'token': 'IDR'}, Hash=ffd025e810fe679d74aa...
+Total blok sekarang: 4
+Status Validasi Chain: VALID (True)
+
+[SKENARIO 3] Tampering Data pada Blok Tengah (Block Index 2)
+Data asli Block 2: {'pengirim': 'Bob', 'penerima': 'Charlie', 'nominal': 20, 'token': 'IDR'}
+Data palsu Block 2: {'pengirim': 'Bob', 'penerima': 'Attacker', 'nominal': 9999, 'token': 'IDR'}
+Status Validasi Chain setelah Tampering Data: TIDAK VALID (False)
+-> Data Block 2 dikembalikan ke kondisi asli.
+Status Validasi Chain pulih: VALID (True)
+
+[SKENARIO 4] Tampering previous_hash pada Block (Block Index 2)
+
+--- Skenario 4A: previous_hash diubah TANPA menghitung ulang hash blok ---
+Previous Hash asli : 3d6b2a27c4fe4131c3e7c3de230634bdbb64fa9bb190819489828abf47d8bed7
+Previous Hash palsu: deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef
+Hash blok tetap    : 4bfe0cf63e24150a701ee34003d8020bed13b45dc71b1295d8fe08e08d0611ef
+Status Validasi Chain (4A): TIDAK VALID (False)
+-> Chain dipulihkan setelah 4A. Status: VALID (True)
+
+--- Skenario 4B: previous_hash diubah DENGAN menghitung ulang hash blok ---
+Previous Hash palsu: deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef
+Hash dihitung ulang: 36d663f20368bad0c7db4f9138d824d0f9a147f277b9f73a5b04579f92d46c66
+Hash internal blok 2 kini konsisten, namun keterikatan dengan blok 1 dan blok 3 terputus.
+Status Validasi Chain (4B): TIDAK VALID (False)
+-> Chain dipulihkan setelah 4B. Status: VALID (True)
+
+[SKENARIO 5] Cetak Rincian Seluruh Rantai Blockchain
+----------------------------------------------------------------------
+Index         : 0
+Timestamp     : 1793667706.936589
+Data          : {'keterangan': 'Genesis Block ITTS Blockchain'}
+Previous Hash : 0000000000000000000000000000000000000000000000000000000000000000
+Current Hash  : 51cb839693409fafe1a324d148c5ec3ea59714ceb8a8ae3f4241503d20b04406
+----------------------------------------------------------------------
+Index         : 1
+Timestamp     : 1793667706.9367113
+Data          : {'pengirim': 'Alice', 'penerima': 'Bob', 'nominal': 50, 'token': 'IDR'}
+Previous Hash : 51cb839693409fafe1a324d148c5ec3ea59714ceb8a8ae3f4241503d20b04406
+Current Hash  : 3d6b2a27c4fe4131c3e7c3de230634bdbb64fa9bb190819489828abf47d8bed7
+----------------------------------------------------------------------
+Index         : 2
+Timestamp     : 1793667706.9367306
+Data          : {'pengirim': 'Bob', 'penerima': 'Charlie', 'nominal': 20, 'token': 'IDR'}
+Previous Hash : 3d6b2a27c4fe4131c3e7c3de230634bdbb64fa9bb190819489828abf47d8bed7
+Current Hash  : 4bfe0cf63e24150a701ee34003d8020bed13b45dc71b1295d8fe08e08d0611ef
+----------------------------------------------------------------------
+Index         : 3
+Timestamp     : 1793667706.9367592
+Data          : {'pengirim': 'Charlie', 'penerima': 'Dave', 'nominal': 15, 'token': 'IDR'}
+Previous Hash : 4bfe0cf63e24150a701ee34003d8020bed13b45dc71b1295d8fe08e08d0611ef
+Current Hash  : ffd025e810fe679d74aa19a21dfe4f1e1ba61dcdad000b744458147d5118fbc5
+----------------------------------------------------------------------
+
+SEMUA SKENARIO PENGUJIAN WAJIB BERHASIL DIEKSEKUSI DENGAN BENAR.
+
