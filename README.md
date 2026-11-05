@@ -104,23 +104,23 @@ Mekanisme integritas data pada blockchain dibangun di atas empat pilar kriptogra
 Berikut adalah dokumentasi tangkapan layar hasil eksekusi program untuk masing-masing skenario pengujian (tersimpan pada folder `screenshots/`):
 
 - **Skenario 1 (Inisialisasi Genesis Block):**  
-  ![Skenario 1](screenshots/skenario_1.png)  
+  ![Skenario 1](screenshots/Skenario_1.png)  
   *Genesis block otomatis terbuat dengan index 0, previous_hash 64 nol, dan status valid.*
 
 - **Skenario 2 (Penambahan 3 Blok Transaksi):**  
-  ![Skenario 2](screenshots/skenario_2.png)  
+  ![Skenario 2](screenshots/Skenario_2.png)  
   *Tiga blok transaksi berhasil ditambahkan dan rantai berstatus valid.*
 
 - **Skenario 3 (Tampering Data Blok Tengah):**  
-  ![Skenario 3](screenshots/skenario_3.png)  
+  ![Skenario 3](screenshots/Skenario_3.png)  
   *Modifikasi data transaksi pada Blok 2 terdeteksi dan menghasilkan status False.*
 
 - **Skenario 4 (Tampering previous_hash - Varian 4A & 4B):**  
-  ![Skenario 4](screenshots/skenario_4.png)  
+  ![Skenario 4](screenshots/Skenario_4.png)  
   *Pengujian pemutusan hash baik tanpa maupun dengan rekalkulasi hash internal keduanya terdeteksi False.*
 
 - **Skenario 5 (Inspeksi Seluruh Rantai Blockchain):**  
-  ![Skenario 5](screenshots/skenario_5.png)  
+  ![Skenario 5](screenshots/Skenario_5.png)  
   *Rincian seluruh blok tercetak lengkap membuktikan keterikatan relasi rantai hash.*
 
 Log output teks lengkap hasil eksekusi terminal tersimpan pada: [`screenshots/output_pengujian.txt`](screenshots/output_pengujian.txt).
